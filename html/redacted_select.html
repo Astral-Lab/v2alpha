@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REDACTED</title>
+</head>
+<body>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        main {
+            position: relative;
+        }
+
+        .circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: white;
+        }
+
+        .triangle {
+            width: 0;
+            height: 0;
+            border-bottom: 60px solid black;
+            border-left: 20px solid transparent;
+            border-right: 100px solid transparent;
+            animation: fleet 5s linear infinite;
+            position: absolute;
+            top: 20px;
+        }
+
+        @keyframes fleet {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        .sTriangle {
+            width: 0;
+            height: 0;
+            border-bottom: 30px solid black;
+            border-left: 10px solid transparent;
+            border-right: 50px solid transparent;
+            animation: fleet 2s linear infinite;
+            
+        }
+
+        .p1 {
+            position: absolute;
+            top: 0;
+        }
+
+        .p2 {
+            position: absolute;
+            top: 30px;
+            left: 100px;
+        }
+
+        .p3 {
+            position: absolute;
+            top: 60px;
+            left: -30px;
+        }
+
+    </style>
+    <main>
+        <div class="circle"></div>
+        <div class="triangle"></div>
+        <!-- <div class="sTriangle p1"></div>
+        <div class="sTriangle p2"></div>
+        <div class="sTriangle p3"></div> -->
+
+    </main>
+</body>
+</html>

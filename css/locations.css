@@ -1,0 +1,440 @@
+@import url('https://fonts.googleapis.com/css2?family=Gemunu+Libre&display=swap');
+
+:root {
+    --back-button-colour: #65081f;
+    --next-button-colour: #08654e;
+    --trace-width: 1px;
+    --header-trace-width: 1px;
+    --nav-animation-time: 2s;
+    --header-animation-time: 5s;
+    --main-colour: black;
+}
+
+/* GENERAL STYLING */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* DISPLAY */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+
+    /* DIMENSIONS */
+    min-height: 100vh; /* does this really solve full-screen issuse? */
+
+    /* COLOUR */
+    background-color: #444444;
+    color: white;
+
+    /* FONT */
+    font-size: 1rem;
+    font-family: 'Gemunu Libre', sans-serif;
+    letter-spacing: 0.10rem;
+}
+
+a:visited, a:active {
+    /* COLOUR */
+    color: white;
+}
+
+/* HEADER STYLING */
+header {
+    /* DISPLAY */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* POSITION */
+    position: relative;
+
+    /* DIMENSIONS */
+    height: 64px;
+    /* Should I explicity specify width? */
+
+    /* COLOUR */
+    background-color: var(--main-colour);
+}
+
+header a {
+    /* FONT */
+    color: white;
+    text-decoration: none;
+}
+
+#pulse-container {
+    /* POSITION */
+    position: absolute;
+    top: 64px;
+    overflow: hidden;
+
+    /* DIMENSIONS */
+    width: 100%;
+    height: 10px;
+}
+
+#pulse-container span {
+    /* POSITION */
+    position: absolute;
+
+    /* DIMENSIONS */
+    height: 1px;
+    width: 100%;
+
+    /* COLOUR */
+    background: linear-gradient(to right, #444444, whitesmoke);
+
+    /* ANIMATION */
+    animation: animate0 var(--header-animation-time) linear infinite;
+    animation-delay: 1s;
+}
+
+@keyframes animate0 {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* MAIN STYLING */
+main {
+    /* DISPLAY SELF*/
+    align-self: center;
+
+    /* DISPLAY */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    border-radius: 2px;
+
+    /* DIMENSIONS */
+    height: auto;
+    width: 90%;
+
+    /* COLOUR */
+    background-color: var(--main-colour);
+}
+
+#title img {
+    /* DIMENSIONS */
+    width: 60px;
+    height: 60px;
+    margin-top: 2rem;
+    border-radius: 2px;
+}
+
+/* ---------------------------------- */
+.videoWrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+}
+
+.videoWrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%
+}
+/* ---------------------------------- */
+
+figcaption {
+    /* DISPLAY */
+    margin: 1.5rem 1rem 1rem 1rem;
+
+    /* FONT */
+    text-align: center;
+    line-height: 1.5rem;
+}
+
+#nav {
+    /* DISPLAY */
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 2.5rem;
+    
+    /* DIMENSIONS */
+    width: 100%;
+
+}
+
+#nav > a {
+    /* DISPLAY */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* POSITION */
+    position: relative;
+    overflow: hidden;
+
+    /* DIMENSIONS */
+    width: 30%;
+    height: 50px;
+
+    /* COLOUR */
+    color: white;
+   
+    /* FONT */
+    text-decoration: none;
+}
+
+/* somehow select all spans of the first <a> element using selectors */
+a span:nth-child(1) {
+    /* POSITION */
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    /* DIMENSIONS */
+    width: 100%;
+    height: var(--trace-width);
+}
+
+a span:nth-child(2) {
+    /* POSITION */
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    /* DIMENSIONS */
+    width: var(--trace-width);
+    height: 100%;
+
+
+}
+
+a span:nth-child(3) {
+    /* POSITION */
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+    /* DIMENSIONS */
+    width: 100%;
+    height: var(--trace-width);
+
+    
+}
+
+a span:nth-child(4) {
+    /* POSITION */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    /* DIMENSIONS */
+    width: var(--trace-width);
+    height: 100%;
+
+    
+}
+
+#nav a:first-child span:nth-child(1) {
+    /* COLOUR */
+    background: linear-gradient(to left, #171618, var(--back-button-colour));
+
+    /* ANIMATION */
+    animation: back_animate1 var(--nav-animation-time) linear infinite;
+    animation-delay: 1s;
+}
+
+#nav a:first-child span:nth-child(2) {
+    /* COLOUR */
+    background: linear-gradient(to top, #171618, var(--back-button-colour));
+
+    /* ANIMATION */
+    animation: back_animate2 var(--nav-animation-time) linear infinite;
+    animation-delay: 2s;
+}
+
+#nav a:first-child span:nth-child(3) {
+    /* COLOUR */
+    background: linear-gradient(to right, #171618, var(--back-button-colour));
+
+    /* ANIMATION */
+    animation: back_animate3 var(--nav-animation-time) linear infinite;
+    animation-delay: 1s;
+}
+
+#nav a:first-child span:nth-child(4) {
+    /* COLOUR */
+    background: linear-gradient(to bottom, #171618, var(--back-button-colour));
+
+    /* ANIMATION */
+    animation: back_animate4 var(--nav-animation-time) linear infinite;
+    animation-delay: 2s;
+}
+
+#nav a:nth-child(2) span:nth-child(1) {
+    background: linear-gradient(to right, #171618, var(--next-button-colour));
+
+    /* ANIMATION */
+    animation: next_animate1 var(--nav-animation-time) linear infinite;
+    animation-delay: 1s;
+}
+
+#nav a:nth-child(2) span:nth-child(2) {
+    background: linear-gradient(to bottom, #171618, var(--next-button-colour));
+
+    /* ANIMATION */
+    animation: next_animate2 var(--nav-animation-time) linear infinite;
+    animation-delay: 2s;
+}
+
+#nav a:nth-child(2) span:nth-child(3) {
+    background: linear-gradient(to left, #171618, var(--next-button-colour));
+
+    /* ANIMATION */
+    animation: next_animate3 var(--nav-animation-time) linear infinite;
+    animation-delay: 1s;
+}
+
+#nav a:nth-child(2) span:nth-child(4) {
+    background: linear-gradient(to top, #171618, var(--next-button-colour));
+
+    /* ANIMATION */
+    animation: next_animate4 var(--nav-animation-time) linear infinite;
+    animation-delay: 2s;
+}
+
+@keyframes back_animate1 {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes back_animate2 {
+    0% {
+        transform: translateY(100%);
+    }
+
+    100% {
+        transform: translateY(-100%);
+    }
+}
+
+@keyframes back_animate3 {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes back_animate4 {
+    0% {
+        transform: translateY(-100%);
+    }
+
+    100% {
+        transform: translateY(100%);
+    }
+}
+
+@keyframes next_animate1 {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes next_animate2 {
+    0% {
+        transform: translateY(-100%);
+    }
+
+    100% {
+        transform: translateY(100%);
+    }
+}
+
+@keyframes next_animate3 {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes next_animate4 {
+    0% {
+        transform: translateY(100%);
+    }
+
+    100% {
+        transform: translateY(-100%);
+    }
+}
+
+/* FOOTER STYLING */
+footer {
+    /* DISPLAY */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* DIMENSIONS */
+    height: 100px;
+
+    /* COLOUR */
+    background-color: var(--main-colour);
+}
+
+#socials {
+    /* DISPLAY */
+    display: flex;
+    gap: 3rem;
+}
+
+#socials img {
+    /* DIMENSIONS */
+    width: 30px;
+    height: 30px;
+}
+
+/* MEDIA QUERIES */
+@media screen and (min-width: 768px) {
+    body {
+        gap: 3rem;
+    }
+
+    main {
+        width: 80%;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    main {
+        width: 40%;
+    }
+
+    figcaption {
+        font-size: 1.5rem;
+        line-height: 3rem;
+    }
+
+    #nav a {
+        width: 20%;
+    }
+}

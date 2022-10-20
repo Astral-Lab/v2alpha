@@ -1,0 +1,320 @@
+@import url('https://fonts.googleapis.com/css2?family=Gemunu+Libre&display=swap');
+
+/* GENERAL STYLING */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* DISPLAY */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+
+    /* DIMENSIONS */
+    min-height: 100vh; /* does this really solve full-screen issuse? */
+
+    /* COLOUR */
+    background-color: #444444;
+    color: white;
+
+    /* FONT */
+    font-size: 1rem;
+    font-family: 'Gemunu Libre', sans-serif;
+    letter-spacing: 0.10rem;
+}
+
+a:visited, a:active {
+    /* COLOUR */
+    color: white;
+}
+
+/* HEADER STYLING */
+header {
+    /* DISPLAY */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* POSITION */
+    position: relative;
+
+    /* DIMENSIONS */
+    height: 64px;
+    /* Should I explicity specify width? */
+
+    /* COLOUR */
+    background-color: black;
+}
+
+header a {
+    /* FONT */
+    color: white;
+    text-decoration: none;
+}
+
+#pulse-container {
+    /* POSITION */
+    position: absolute;
+    top: 64px;
+    overflow: hidden;
+
+    /* DIMENSIONS */
+    width: 100%;
+    height: 10px;
+}
+
+#pulse-container span {
+    /* POSITION */
+    position: absolute;
+
+    /* DIMENSIONS */
+    height: 1px;
+    width: 100%;
+
+    /* COLOUR */
+    background: linear-gradient(to right, #444444, whitesmoke);
+
+    /* ANIMATION */
+    animation: animate0 5s linear infinite;
+    animation-delay: 1s;
+}
+
+@keyframes animate0 {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* MAIN STYLING */
+main {
+    /* DISPLAY SELF*/
+    align-self: center;
+
+    /* DISPLAY */
+    display: flex;
+    flex-direction: column;
+    
+    gap: 3rem;
+    border-radius: 2px;
+
+    /* DIMENSIONS */
+    height: auto;
+    width: 90%;
+
+    /* COLOUR */
+    background-color: black;
+}
+
+#title {
+    /* DISPLAY */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 3rem;
+
+    /* FONT */
+    font-size: 1.5rem;
+}
+
+#grid-container {
+    /* DISPLAY */
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    grid-template-columns: repeat(3, 20%);
+    grid-template-columns: repeat(3, 20%);
+    gap: 1rem;
+}
+
+#grid-container img {
+    /* DIMENSIONS */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  
+    border: 1px solid hsl(115, 98%, 55%);
+    padding: 0.30rem;
+    
+}
+
+#nav {
+    /* DISPLAY */
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 2.5rem;
+    
+    /* DIMENSIONS */
+    width: 100%;
+
+}
+
+#nav > a {
+    /* DISPLAY */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* POSITION */
+    position: relative;
+    overflow: hidden;
+
+    /* DIMENSIONS */
+    width: 30%;
+    height: 50px;
+
+    /* COLOUR */
+    color: white;
+   
+    /* FONT */
+    text-decoration: none;
+}
+
+a span:nth-child(1) {
+    /* POSITION */
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    /* DIMENSIONS */
+    width: 100%;
+    height: 1px;
+
+    /* COLOUR */
+    background: linear-gradient(to right, black, #08654e);
+    
+    /* ANIMATION */
+    animation: animate1 2s linear infinite;
+    animation-delay: 1s;
+    
+}
+
+a span:nth-child(2) {
+    /* POSITION */
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    /* DIMENSIONS */
+    width: 1px;
+    height: 100%;
+
+    /* COLOUR */
+    background: linear-gradient(to bottom, black, #08654e);
+    
+    /* ANIMATION */
+    animation: animate2 2s linear infinite;
+    animation-delay: 2s;
+}
+
+a span:nth-child(3) {
+    /* POSITION */
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+    /* DIMENSIONS */
+    width: 100%;
+    height: 1px;
+
+    /* COLOUR */
+    background: linear-gradient(to left, black, #08654e);
+
+    /* ANIMATION */
+    animation: animate3 2s linear infinite;
+    animation-delay: 1s;
+
+}
+
+a span:nth-child(4) {
+    /* POSITION */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    /* DIMENSIONS */
+    width: 1px;
+    height: 100%;
+
+    /* COLOUR */
+    background: linear-gradient(to top, black, #08654e);
+
+    /* ANIMATION */
+    animation: animate4 2s linear infinite;
+    animation-delay: 2s;
+}
+
+@keyframes animate1 {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes animate2 {
+    0% {
+        transform: translateY(-100%);
+    }
+
+    100% {
+        transform: translateY(100%);
+    }
+}
+
+@keyframes animate3 {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes animate4 {
+    0% {
+        transform: translateY(100%);
+    }
+
+    100% {
+        transform: translateY(-100%);
+    }
+}
+
+/* FOOTER STYLING */
+footer {
+    /* DISPLAY */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* DIMENSIONS */
+    height: 100px;
+
+    /* COLOUR */
+    background-color: black;
+}
+
+#socials {
+    /* DISPLAY */
+    display: flex;
+    gap: 3rem;
+}
+
+#socials img {
+    /* DIMENSIONS */
+    width: 30px;
+    height: 30px;
+}
+
+/* MEDIA QUERIES */
