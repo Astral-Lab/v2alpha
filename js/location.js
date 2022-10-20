@@ -1,49 +1,58 @@
-class URLChain {
-    // Accepts an array of gridItem objects and returns an array containing the gridItem URLs
-    static createChain(data) {
-        let urls = [];
-        for(const item of data) {
-            urls.push(item.getURL());
-        }
-        return urls;    // turn this into a one line statement using an array method which return a new array 
-    }
+import { URLChain } from './modules/urlChain.mjs';
 
-    constructor(data) {
-        this.chain = URLChain.createChain(data);
-        this.current = -1;
-    }
+/*
+Can add an id to each button, id="next/back/home"
+if id is not present then by pure logic we will know the page we're on
+1: n
+2: nb
+3: nb
+4: bh
+*/
 
-    // Add some error checking as well.
-    nextURL() {
-        this.current++;
-        localStorage.setItem('urlChain', JSON.stringify(this));  // why do I stringify again?
-        return this.chain[this.current]; 
-    }
+const backBtn = document.querySelector('#back');
+const nextBtn = document.querySelector('#next');
+const homeBtn = document.querySelector('#home');
 
-    prevURL() { 
-        this.current--;
-        return this.chain[this.current]; 
-    }
+const PREV = -1;
+const NEXT = 1;
+const HOME = 0;
+
+function getSetOpen(direction) {
+    const urlChain = JSON.parse(localStorage.getItem('urlChain'));
+    Object.setPrototypeOf(urlChain, URLChain.prototype);
+    window.open(
+        direction === -1 ? urlChain.prevURL() : 
+        direction === 1 ? urlChain.nextURL() : 
+        '../../index.html', '_self'
+    );
 }
 
-// I love JavaScript
-const [backBtn, nextBtn] = document.querySelectorAll('#nav a');
+// If the btns exist, then add event listeners and customisation if needed
+if(backBtn) {
+    backBtn.addEventListener('click', () => {
+        event.preventDefault(); // can I get rid of this?
+        getSetOpen(PREV);
+    });
+}
 
-console.log(backBtn, nextBtn);
+if(nextBtn) {
+    nextBtn.addEventListener('click', event => {
+        event.preventDefault();
+        getSetOpen(NEXT);
+    });
+}
 
+if(homeBtn) {   // clear localStorage?
+    homeBtn.addEventListener('click', event => {
+        event.preventDefault();
+        getSetOpen(HOME);
+    });
+}
 
-backBtn.addEventListener('click', event => {
-    event.preventDefault();
-
-    // Link to previous page
-})
-
-nextBtn.addEventListener('click', event => {
-    event.preventDefault();
-
-    // Link to next page
-    const urlChain = JSON.parse(localStorage.getItem('urlChain'));
-    Object.setPrototypeOf(urlChain, URLChain.prototype)
-    console.log(urlChain);
-    window.open(urlChain.nextURL(), '_self');
-})
+// make this look nicer
+const urlChain = JSON.parse(localStorage.getItem('urlChain'));
+const parent = document.querySelector('#nav')
+Object.setPrototypeOf(urlChain, URLChain.prototype);
+if(urlChain.atStart()) {
+    parent.removeChild(backBtn);   
+}

@@ -31,6 +31,9 @@ body {
 a {
     /* FONT */
     text-decoration: none;
+
+    /* COLOUR */
+    color: white;
 }
 
 a:visited, a:active {
