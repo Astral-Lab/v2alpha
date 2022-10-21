@@ -183,3 +183,10 @@ footer {
     width: 30px;
     height: 30px;
 }
+
+/* MEDIA QUERIES */
+@media screen and (max-height: 450px) {
+    figure {
+        margin: 2rem 0 2rem 0;
+    }
+}
