@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Gemunu+Libre&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100vh;
+
+    /* FONT */
+    font-family: 'Gemunu Libre', sans-serif;
+    letter-spacing: 0.10rem;
+}
+
+/* HEADER STYLING */
+header {
+    /* DISPLAY */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* DIMENSIONS */
+    width: 100%;
+    height: 64px;
+
+    /* COLOUR */
+    color: black;
+    background-color: white;
+}
+
+a, a:visited, a:active {
+    /* FONT */
+    color: black;
+    text-decoration: none;
+}
+
+/* MAIN STYLING */
+main {
+    
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+}
+
+#animation {
+    position: relative;
+}
+
+.circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: white;
+}
+
+.triangle {
+    width: 0;
+    height: 0;
+    border-bottom: 60px solid black;
+    border-left: 20px solid transparent;
+    border-right: 100px solid transparent;
+    animation: fleet 5s linear infinite;
+    position: absolute;
+    top: 20px;
+}
+
+@keyframes fleet {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+#countdown {
+    color: white;
+    font-size: 2rem;
+}
+
+
+
+figcaption {
+    margin-top: 0.2rem;
+    text-align: center;
+    color: white;
+    font-size: 0.4rem;
+}
+
+/* FOOTER STYLING */
+footer {
+    /* DISPLAY */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* DIMENSIONS */
+    width: 100%;
+    height: 100px;
+
+    /* COLOUR */
+    background-color: white;
+}
+
+#socials img {
+    width: 30px;
+    height: 30px;
+}
