@@ -1,8 +1,24 @@
 class Grid {
     static SELECT_LIMIT = 3;
 
-    constructor(gridItems) {
-        this.gridItems = gridItems;
+    // why static? We do not need it once the object is created.
+    // scans the DOM for #grid-container divs and returns an array
+    // of GridItem objects
+    static initGrid() {
+        const elements = document.querySelectorAll('#grid-container div');
+        const gridItems = [];
+        for(let i = 0; i < elements.length; ++i) {
+            gridItems.push(new GridItem(false, `symbol_${i + 1}.html`, elements[i]));
+        }
+        return gridItems;
+    }
+
+    constructor() {
+        this.gridItems = Grid.initGrid();
+
+        for(const item of this.gridItems) {
+            item.addBehaviour(this);
+        }
     }
 
     /* Methods */
@@ -36,7 +52,7 @@ class GridItem {
 
     /* Methods */
     isActive() {
-        return this.active;
+        return this.active; 
     }
 
     getURL() {
@@ -49,6 +65,18 @@ class GridItem {
 
     toggle() {
         this.active = !this.active;
+    }
+
+    addBehaviour(grid) {
+        this.elem.addEventListener('click', () => { 
+            if(!this.active && grid.activeCount() < Grid.SELECT_LIMIT) {
+                this.toggle();
+                this.elem.style.backgroundColor = '#2ffd1c';
+            } else if(this.active) {  
+                this.toggle();
+                this.elem.style.backgroundColor = '#000000'; 
+            }
+        });
     }
 }
 

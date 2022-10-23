@@ -9,6 +9,12 @@ class URLChain {
         return urls;    // turn this into a one line statement using an array method which return a new array 
     }
 
+    static GetLocalChain() {
+        return Object.setPrototypeOf(
+            JSON.parse(localStorage.getItem('urlChain')), URLChain.prototype
+        );
+    }
+
     constructor(data, final) {
         this.chain = URLChain.createChain(data, final);
         this.current = -1;
@@ -17,7 +23,7 @@ class URLChain {
     // Add some error checking as well.
     nextURL() {
         this.current++;
-        localStorage.setItem('urlChain', JSON.stringify(this));  // why do I stringify again?
+        localStorage.setItem('urlChain', JSON.stringify(this));  // why do I stringify again? this reference to entire object?
         return this.chain[this.current]; 
     }
 

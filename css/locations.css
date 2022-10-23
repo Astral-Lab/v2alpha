@@ -3,7 +3,7 @@
 :root {
     --back-button-colour: #65081f;
     --next-button-colour: #08654e;
-    --trace-width: 1px;
+    --trace-width: 2px;
     --header-trace-width: 1px;
     --nav-animation-time: 2s;
     --header-animation-time: 5s;
@@ -123,11 +123,15 @@ main {
     background-color: var(--main-colour);
 }
 
+#title:first-child {
+    /* DIMENSIONS */
+    margin-top: 2rem;
+}
+
 #title img {
     /* DIMENSIONS */
     width: 60px;
     height: 60px;
-    margin-top: 2rem;
     border-radius: 2px;
 }
 

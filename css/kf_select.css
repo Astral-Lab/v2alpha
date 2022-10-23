@@ -47,7 +47,7 @@ header {
     /* Should I explicity specify width? */
 
     /* COLOUR */
-    background-color: black;
+    background-color: #000000;
 }
 
 header a {
@@ -140,7 +140,7 @@ main {
     height: 100%;
     object-fit: cover;
   
-    border: 1px solid hsl(115, 98%, 55%);
+    border: 1px solid #2ffd1c;
     padding: 0.30rem;
     
 }
