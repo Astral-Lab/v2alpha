@@ -54,13 +54,24 @@ class Navigation {
             }
         } else {
             this.pageButtons[0].addEventListener('click', event => {
+                // Anchor elements do not specify the href, so we must prevent the page from being reloaded.
                 event.preventDefault();
                 if(grid.activeCount() === 3) {
+                    // Construct a URLChain object to link all selected pages together.
                     const urlChain = new URLChain(grid.activeItems(), 'accepted.html');
-                    console.log(urlChain);
-                    window.open(`kf_locations/${urlChain.nextURL()}`, '_self');
+                    // Extract the raid name from the URL.
+                    // For example, URL = .*/html/kf_select.html, then raid name = kf.
+                    // Allows for dynamic linking, wow, that sounds pretty cool.
+                    // Regex most likely would work better here, but this works for now.
+                    const path = window.location.href;  
+                    // We do not want to include the '/', hence the +1
+                    const fileIndex = path.lastIndexOf('/') + 1;
+                    const seprator = path.lastIndexOf('_');
+                    const raidName = path.substring(fileIndex, seprator);
+                    // Open next webpage as we have all the link data.
+                    window.open(`${raidName}_locations/${urlChain.nextURL()}`, '_self');
                 }
-            })
+            }); 
         }
     }
 }

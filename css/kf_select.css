@@ -139,10 +139,8 @@ main {
     width: 100%;
     height: 100%;
     object-fit: cover;
-  
-    border: 1px solid #2ffd1c;
+    border: 1px solid var(--borderColour);
     padding: 0.30rem;
-    
 }
 
 #nav {
@@ -185,7 +183,7 @@ a span:nth-child(1) {
 
     /* DIMENSIONS */
     width: 100%;
-    height: 1px;
+    height: 2px;
 
     /* COLOUR */
     background: linear-gradient(to right, black, #08654e);
@@ -203,7 +201,7 @@ a span:nth-child(2) {
     right: 0;
 
     /* DIMENSIONS */
-    width: 1px;
+    width: 2px;
     height: 100%;
 
     /* COLOUR */
@@ -222,7 +220,7 @@ a span:nth-child(3) {
 
     /* DIMENSIONS */
     width: 100%;
-    height: 1px;
+    height: 2px;
 
     /* COLOUR */
     background: linear-gradient(to left, black, #08654e);
@@ -240,7 +238,7 @@ a span:nth-child(4) {
     left: 0;
 
     /* DIMENSIONS */
-    width: 1px;
+    width: 2px;
     height: 100%;
 
     /* COLOUR */

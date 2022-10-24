@@ -48,6 +48,7 @@ class GridItem {
         this.active = active;
         this.url = url;
         this.elem = elem;
+        this.colour;
     }
 
     /* Methods */
@@ -71,7 +72,21 @@ class GridItem {
         this.elem.addEventListener('click', () => { 
             if(!this.active && grid.activeCount() < Grid.SELECT_LIMIT) {
                 this.toggle();
-                this.elem.style.backgroundColor = '#2ffd1c';
+                // Duplicated code, make class method or new class?
+                const path = window.location.href;  
+                // We do not want to include the '/', hence the +1
+                const fileIndex = path.lastIndexOf('/') + 1;
+                const seprator = path.lastIndexOf('_');
+                const raidName = path.substring(fileIndex, seprator);
+                switch(raidName) {
+                    case 'kf':
+                        this.colour = '#2ffd1c';
+                        break;
+                    case 'vow':
+                        this.colour = '#e4af00';
+                        break;
+                }
+                this.elem.style.backgroundColor = this.colour;
             } else if(this.active) {  
                 this.toggle();
                 this.elem.style.backgroundColor = '#000000'; 
