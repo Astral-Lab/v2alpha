@@ -14,8 +14,6 @@ body {
     justify-content: space-between;
     gap: 2rem;
 
-    /* POSITION */
-
     /* DIMENSIONS */
     min-height: 100vh;
 
@@ -123,9 +121,6 @@ figure {
     /* DIMENSIONS */
     width: 100%;
     height: auto;
-
-    /* COLOUR */
-    background-color: blue;;
 }
 
 img {
@@ -182,4 +177,19 @@ footer {
     /* DIMENSIONS */
     width: 30px;
     height: 30px;
+}
+
+/* MEDIA QUERIES */
+@media screen and (min-width: 1024px) {
+    main {
+        flex-direction: row;
+    }
+
+    figure {
+        width: 30%;
+    }
+
+    figure:hover {
+        transform: scale(1.05);
+    }
 }

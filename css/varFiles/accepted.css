@@ -1,0 +1,9 @@
+:root {
+    --back-button-colour: #65081f;
+    --next-button-colour: #2990B5;  /* next-button-colour == home-button-colour */
+    --trace-width: 2px;
+    --header-trace-width: 1px;
+    --nav-animation-time: 2s;
+    --header-animation-time: 5s;
+    --main-colour: black;
+}

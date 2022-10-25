@@ -143,6 +143,10 @@ main {
     padding: 0.30rem;
 }
 
+#grid-container img:hover {
+    cursor: pointer;
+}
+
 #nav {
     /* DISPLAY */
     display: flex;
@@ -316,3 +320,27 @@ footer {
 }
 
 /* MEDIA QUERIES */
+@media screen and (min-width: 768px) {
+    main {
+        width: 75%;
+    }
+
+    #grid-container img {
+        /* DIMENSIONS */
+        padding: 0.50rem;
+    }
+
+    #nav a {
+        width: 20%;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    main {
+        width: 30%;
+    }
+
+    #nav a {
+        width: 20%;
+    }
+}
