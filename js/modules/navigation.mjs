@@ -29,6 +29,8 @@ class Navigation {
             document.querySelector('#nav').removeChild(
                 this.pageButtons.find(btn => btn.id === 'back'
             ));
+            // Otherwise the next button default to the colour #65081f.
+            document.documentElement.style.setProperty('--back-button-colour', '#08654e');
         }
     }
 
