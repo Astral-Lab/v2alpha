@@ -307,16 +307,11 @@ footer {
     background-color: black;
 }
 
-#socials {
-    /* DISPLAY */
-    display: flex;
-    gap: 3rem;
-}
-
 #socials img {
     /* DIMENSIONS */
     width: 30px;
     height: 30px;
+    margin: 0 1rem 0 1rem;
 }
 
 /* MEDIA QUERIES */
