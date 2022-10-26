@@ -19,30 +19,62 @@ class Navigation {
 
     constructor(pageButtons, urlChain) {
         this.pageButtons = Array.from(pageButtons); // convert NodeList to Array so we can use the .find() method
-        this.urlChain = urlChain;                   // null indicates we are on the first page
+        this.urlChain = urlChain;                   
 
-        if(urlChain && urlChain.atStart()) {
+        /*
+         * I do not want the user to be able to go back on the first locaion page, so this code checks if we are
+         * on the first page, if so, remove the back button. 
+         */
+        if(urlChain && urlChain.atStart()) {        
             document.querySelector('#nav').removeChild(
                 this.pageButtons.find(btn => btn.id === 'back'
             ));
-            // Otherwise the next button default to the colour #65081f.
-            document.documentElement.style.setProperty('--back-button-colour', '#08654e');
         }
     }
 
+    /*
+     * openPage is a wrapper function for window.open().
+     * Its purpose is not necessary as chaining if statements
+     * may also work, this just look nicer to me and what I
+     * thought of at the time.
+     */
     openPage(directionFlag) {
         window.open(
             directionFlag === -1 ? this.urlChain.prevURL() : 
             directionFlag === 1 ? this.urlChain.nextURL() : 
-            '../../index.html', '_self' // put in urlChain class
+            '../../index.html', '_self'
         );
     }
 
+    /*
+     * This method adds the behaviour to the navigation buttons.
+     * It ensures each button links to the correct webpage in the 
+     * URLChain.
+     * event.preventDefault() is being used, as without it when a 
+     * navigation button is clicked the page reloads. This is
+     * because I am using anchor elements <a> with the href set to
+     * an empty string, which by default, would reload the page, hence
+     * preventDefault(). Using button elements or divs would render this
+     * line unnecessary, but it is good practive as I am now aware of
+     * default element behaviour.
+     * 
+     * We pass a grid object in as depending on the webpage we are 
+     * currently on, the buttons should (link) behave differently.
+     * For example, when we are on the symbol select page, the next
+     * button should not open the next page unless three symbols have
+     * been selected. 
+     * 
+     * The root reason for using the grid object as a parameter, is
+     * due to function overloading, which at the current time of writing
+     * this, I am not aware if there is an explict way of doing this
+     * in JavaScript, so by using if else statements I can detect if the grid
+     * object argument has been passed in or not.
+     */
     addClickListeners(grid) {
         if(!grid) {
             for(const btn of this.pageButtons) {
-                btn.addEventListener('click', (e) => {
-                    e.preventDefault();
+                btn.addEventListener('click', event => {
+                    event.preventDefault();
                     this.openPage(
                         btn.id === 'back' ? Navigation.#BACK :
                         btn.id === 'next' ? Navigation.#NEXT :

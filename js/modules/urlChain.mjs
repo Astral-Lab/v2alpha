@@ -39,7 +39,7 @@ class URLChain {
      */
     nextURL() {
         this.current++;
-        localStorage.setItem('urlChain', JSON.stringify(this));  // why do I stringify again? this reference to entire object?
+        localStorage.setItem('urlChain', JSON.stringify(this));  // this is a reference to the current object.
         return this.chain[this.current]; 
     }
 
@@ -56,7 +56,7 @@ class URLChain {
      */
     prevURL() { 
         this.current--;
-        localStorage.setItem('urlChain', JSON.stringify(this));  // why do I stringify again?
+        localStorage.setItem('urlChain', JSON.stringify(this)); // objects have to be stringified for localStorage.
         return this.chain[this.current]; 
     }
 

@@ -20,6 +20,12 @@ navigation.addClickListeners();
  * My short term solution is to automatically refresh the iframe when the page loads, so even if the iframe does not load on the 
  * iniitial load it does not matter.
  * Not the niceset fix, but it'll do for now ;)
+ * 
+ * UPDATE: 26/10/2022
+ * Turns out this does not work.
+ * I will take out the loop functionality until a permanant solution is found.
+ * This means taking out the &loop and &playlist parameters in the HTML iframe embed
+ * and disabling the below code.
  */
-const iframe = document.querySelector('iframe');
-iframe.src = iframe.src;
+// const iframe = document.querySelector('iframe');
+// iframe.src = iframe.src;
