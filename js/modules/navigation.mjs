@@ -1,29 +1,25 @@
 import { URLChain } from "./urlChain.mjs";
-/*
- * Document Class Details?
- *
- * Summary:
- * 
- * Properties:
- * 
- * Methods:
- * 
- * 
- */
 
-// Comment Class!
 class Navigation {
+    /*
+     * In the contenxt of symboltracker.net, this static method returns 
+     * all the navigation buttons on the webpage, <next|back|home>.
+     */
     static getNavButtons() {
         return document.querySelectorAll('#nav a');
     }
- 
+    
+    /*
+     * Used for semantic meaning only.
+     * Indicates the direction we are traversing the URLChain (webpages). 
+     */
     static #NEXT = 1;
     static #BACK = -1;
     static #HOME = 0;
 
     constructor(pageButtons, urlChain) {
         this.pageButtons = Array.from(pageButtons); // convert NodeList to Array so we can use the .find() method
-        this.urlChain = urlChain;   // null indicates we are on the first page
+        this.urlChain = urlChain;                   // null indicates we are on the first page
 
         if(urlChain && urlChain.atStart()) {
             document.querySelector('#nav').removeChild(
